@@ -16,7 +16,7 @@ public class Exponencial {
     private int semilla = 0;
  
     private int xi; //semilla
-    private int a; //constatne multiplicativa
+    private int a; //constante multiplicativa
     private int c; //constante aditiva
     private int m; //modulo
    private int me; //media
