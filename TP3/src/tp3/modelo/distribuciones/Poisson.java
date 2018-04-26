@@ -24,9 +24,9 @@ public class Poisson implements IModeloDistr{
 
     public Poisson(double lamda, boolean RndCong) {
         this.lamda = lamda;
-        this.p=1;
-        this.x=-1;
-        this.a=Math.pow(Math.E,(this.lamda*(-1)));
+        this.p = 1;
+        this.x = -1;
+        this.a = Math.pow(Math.E,(this.lamda*(-1)));
         
         if(RndCong){
             random = new RandomCong();
@@ -48,11 +48,11 @@ public class Poisson implements IModeloDistr{
  
     @Override
     public double generarProximoNumero() {
-        while(this.p >= this.a){
-            double u = (random.generarRandom() * 1);
+        do{
+            double u = (random.generarRandom());
             this.p = p * u;
             this.x = x + 1;
-        }
+        }while(this.p >= this.a);
        return x;       
     }
     
