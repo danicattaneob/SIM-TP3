@@ -3,29 +3,39 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
-package tp3.modelo;
+package tp3.modelo.distribuciones;
 
 import java.util.LinkedList;
+import tp3.modelo.random.RandomAbs;
+import tp3.modelo.random.RandomCong;
+import tp3.modelo.random.RandomJava;
 
 /**
  *
  * @author valter
  */
-public class Poisson {
+public class Poisson implements IModeloDistr{
     
     private  double lamda;
     private double p;
     private double x;
     private double a;
+    private RandomAbs random;
 
-    public Poisson(double lamda) {
+    public Poisson(double lamda, boolean RndCong) {
         this.lamda = lamda;
         this.p=1;
         this.x=-1;
         this.a=Math.pow(Math.E,(this.lamda*(-1)));
+        
+        if(RndCong){
+            random = new RandomCong();
+        }else{
+            random = new RandomJava();
+        }
     }
     
-   
+    @Override
     public LinkedList<Double> generarSerie(int cantidad) {
 
         LinkedList<Double> list = new LinkedList<>();
@@ -36,13 +46,12 @@ public class Poisson {
         return list;    
     }
  
-    private double generarProximoNumero() {
-                  while(this.p>=this.a)
-        {
-            double u=(Math.random()*1);
-            this.p=p*u;
-            this.x=x+1;
-            
+    @Override
+    public double generarProximoNumero() {
+        while(this.p >= this.a){
+            double u = (random.generarRandom() * 1);
+            this.p = p * u;
+            this.x = x + 1;
         }
        return x;       
     }

@@ -27,8 +27,8 @@ import javafx.scene.control.Button;
 import javafx.scene.control.Label;
 import javafx.scene.control.ListView;
 import javafx.scene.control.TextField;
-import tp3.modelo.Exponencial;
-import tp3.modelo.Uniforme;
+import tp3.modelo.distribuciones.Exponencial;
+import tp3.modelo.distribuciones.Uniforme;
 
 /**
  *
@@ -129,26 +129,7 @@ public class VistaGeneradorController implements Initializable {
     
     @FXML
     private void generarSerieDistUn(ActionEvent event) {
-        
-        //////////////////////////////////// UNIFORME
-        Uniforme u = new Uniforme();
-        //para el generador RND
-        u.setA(13);//cte multiplicativa
-        u.setC(7); //cte aditiva
-        u.setM(8);//modulo
-        //para la distribucion
-        u.setA2(95); //limite inferior intervalo
-        u.setB(100);//limite superior intervalo
-        System.out.println(u.generarSerie(6, 10)); //le paso la semilla y la cantidad de valores que quiero
-        //////////////////////////////////// EXPONENCIAL
-        Exponencial ex=new Exponencial();
-        ex.setA(13);//cte multiplicativa
-        ex.setC(3); //cte aditiva
-        ex.setM(8);//modulo
-        ex.setMe(5);
-        ObservableList<Double> items =FXCollections.observableArrayList(ex.generarSerie(6, 10));
-        LVDistUn.setItems(items);
-        System.out.println(ex.generarSerie(6, 10));
+        //TODO
     }
     
     
