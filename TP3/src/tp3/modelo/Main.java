@@ -8,6 +8,7 @@ package tp3.modelo;
 import tp3.modelo.random.RandomCong;
 import java.util.LinkedList;
 import tp3.modelo.distribuciones.Uniforme;
+import tp3.modelo.distribuciones.Exponencial;
 
 /**
  *
@@ -30,12 +31,12 @@ public class Main {
         System.out.println(u.frecObtenida(5, serie));
        // System.out.println(u.pruebaChi(5, serie));
 ////        ////////////////////////////////// EXPONENCIAL
-//        Exponencial ex = new Exponencial();
+        Exponencial ex = new Exponencial(3,false);
 //        ex.setA(13);//cte multiplicativa
 //        ex.setC(3); //cte aditiva
 //        ex.setM(8);//modulo
 //        ex.setMe(5);
-//        System.out.println(ex.generarSerie(6, 10));
+        System.out.println(ex.generarSerie(10));
 ////        ///////////////////////////////// NORMAL  
 //        Normal n = new Normal(2, 323, 4);
 ////      LinkedList l=n.generarSerie(1);

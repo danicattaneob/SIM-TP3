@@ -85,78 +85,8 @@ public class Uniforme implements IModeloDistr{
         }
         return listFO;
     }
-    
-    
-    
-    
-    
-//  public String pruebaChi(int intervalos, LinkedList<Double> serie)
-//  {
-//      //CALCULO FE
-//      double fe=serie.size()/intervalos;
-//      while(5 > fe) {
-//          intervalos--;//como no puede ser la frecuencia esperada menor a 5, reduzco intervalos
-//          fe=serie.size()/intervalos;
-//      }
-//      //CALCULO FO
-//      LinkedList<Double> listFO= new LinkedList<>(); //columna FO
-//      for (int i = 0; i < listFO.size(); i++) listFO.set(i,0.0);//Seteo en cero
-//      LinkedList<Double> listLimInf= new LinkedList<>(); 
-//      listLimInf= limInferior(serie,intervalos); //columna limites inferiores intervalo
-//      LinkedList<Double> listLimSup= new LinkedList<>(); 
-//      listLimSup= limSuperior(serie,intervalos);//columna limites superiores intervalo
-//      int i = 0;
-//      while (i < intervalos) {
-//          double x = 0; //contador de frecuencias          
-//          for (int k = 0; k < serie.size(); k++) {
-//              if (serie.get(k) > listLimInf.get(i) && serie.get(k) < listLimSup.get(i)) {//veo si esta adentro del intervalo
-//                  x++;
-//              }
-//          }
-//          listFO.set(i, x); //seteo la cantidad de frecuencias observadas
-//          i++;
-//      }
-//      //CALCULO CHI
-//      LinkedList<Double> c= new LinkedList<>();
-//      for (int j = 0; j < intervalos; j++) {          
-//          c.set(j,Math.pow((listFO.get(j)-fe),2)/fe);     //para cada intervalo calculo     
-//      }
-//      double chi=0;
-//      //HAGO SUMATORIA
-//      for (int j = 0; j <intervalos; j++) {
-//          chi+=c.get(j);          
-//      }
-//      if(chi<5){
-//          return "si";
-//      }else{
-//          return "no";
-//      }           
-//  }
-    //para obtener el lista con lim inferiores 
-//    public LinkedList<Double> limInferior(LinkedList<Double> serie, int intervalos) {
-//        LinkedList<Double> list = new LinkedList<>();
-//        bubbleSort(serie);
-//        double rango = serie.getFirst() - serie.getLast();
-//        double amp = rango / intervalos;
-//        double amplitud = Math.round(amp); //redondeo para que el intervalo contenga los primeros y ultimos valores de la serie
-//        for (int i = 0; i < list.size(); i++) {
-//            list.set(i, (serie.getFirst() + amplitud * i));   //lista con lim inferiores de los intervalos  
-//        }
-//        return list;
-//    }
-//    //para obtener el lista con lim superiores 
-//    public LinkedList<Double> limSuperior(LinkedList<Double> serie, int intervalos) {
-//        LinkedList<Double> list = new LinkedList<>();
-//        bubbleSort(serie);
-//        double rango = serie.getLast() - serie.getFirst();
-//        double amp = rango / intervalos;
-//        double amplitud = Math.round(amp); //redondeo para que el intervalo contenga los primeros y ultimos valores de la serie
-//        for (int i = 0; i < list.size(); i++) {
-//            list.set(i, (serie.getFirst() + amplitud * (i + 1)));   //lista con lim superiores de los intervalos  
-//        }
-//        return list;
-//    }
-    //para ordenar la serie y obtener el menor y mayor
+        
+        //para ordenar la serie y obtener el menor y mayor
     private void bubbleSort(LinkedList<Double> v) {
         boolean ordenado = false;
         int n = v.size();
