@@ -89,6 +89,7 @@ private int semilla = 0;
        return (double) xi/ (double) m;       
     }
     
+  
     
     
 }
