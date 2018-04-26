@@ -7,6 +7,7 @@ package tp3.modelo;
 
 import tp3.modelo.random.RandomCong;
 import java.util.LinkedList;
+import tp3.modelo.distribuciones.Uniforme;
 
 /**
  *
@@ -16,15 +17,18 @@ public class Main {
     
     public static void main(String[] args){
 ////        ////////////////////////////////// UNIFORME
-//        Uniforme u = new Uniforme();
-//        //para el generador RND
+        Uniforme u = new Uniforme(95,100,false);
+        //para el generador RND
 //        u.setA(13);//cte multiplicativa
 //        u.setC(7); //cte aditiva
 //        u.setM(8);//modulo
 //        //para la distribucion
 //        u.setA2(95); //limite inferior intervalo
 //        u.setB(100);//limite superior intervalo
-//        System.out.println(u.generarSerie(6, 10)); //le paso la semilla y la cantidad de valores que quiero
+          LinkedList<Double> serie = u.generarSerie(100);
+          System.out.println(serie); //le paso la cantidad de valores que quiero
+        System.out.println(u.frecObtenida(5, serie));
+       // System.out.println(u.pruebaChi(5, serie));
 ////        ////////////////////////////////// EXPONENCIAL
 //        Exponencial ex = new Exponencial();
 //        ex.setA(13);//cte multiplicativa
@@ -39,15 +43,15 @@ public class Main {
 ////      System.out.println("sida");
 //        System.out.println(n.generarSerie(10));
 
-        RandomCong ran = new RandomCong();
-        //System.out.println(ran.getNumeroPrimo());
-        System.out.println("------------------/");
-        System.out.println(ran.getA() + " - " + ran.getM() + " - " + ran.getXi());
-        System.out.println("------------------/");
-        for (int i = 0; i < 15; i++) {
-                System.out.println(ran.generarRandom());
-            
-        }
+//        RandomCong ran = new RandomCong();
+//        //System.out.println(ran.getNumeroPrimo());
+//        System.out.println("------------------/");
+//        System.out.println(ran.getA() + " - " + ran.getM() + " - " + ran.getXi());
+//        System.out.println("------------------/");
+//        for (int i = 0; i < 15; i++) {
+//                System.out.println(ran.generarRandom());
+//            
+//        }
         
     }
 }
