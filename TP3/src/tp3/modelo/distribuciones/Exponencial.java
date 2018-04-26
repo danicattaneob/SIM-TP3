@@ -49,4 +49,6 @@ public class Exponencial implements IModeloDistr{
     public double generarProximoNumero() {
        return (-me)*(Math.log( 1-random.generarRandom()));
     }
+    
+    
 }
