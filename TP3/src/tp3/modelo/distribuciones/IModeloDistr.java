@@ -15,6 +15,7 @@ public interface IModeloDistr {
     
     public LinkedList<Double> generarSerie(int cantidad);
     public double generarProximoNumero();
+    //public boolean pruebaChi(int intervalos,LinkedList<Double> serie,int cantidad);
     
     
     

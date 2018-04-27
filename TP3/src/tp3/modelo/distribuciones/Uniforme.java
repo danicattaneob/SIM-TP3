@@ -66,7 +66,7 @@ public class Uniforme implements IModeloDistr{
     }
     
     
-    public boolean pruebaChi(int intervalos,LinkedList<Double> serie)
+    public boolean pruebaChi(int intervalos,LinkedList<Double> serie,int cantidad)
     {   
         double tablaChi[]={3.84,5.99,7.81,9.49,11.1,12.6,14.1,15.5,16.9,18.3,19.7,21.0,22.4,23.7,25.0,26.3,27.6,28.9,30.1};
         double fe=serie.size()/intervalos;

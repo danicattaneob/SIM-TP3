@@ -18,14 +18,14 @@ import tp3.modelo.random.RandomJava;
 public class Exponencial implements IModeloDistr{
     
     private RandomAbs random;
-    private int me; //media
+    private double lambda; //media
 
-    public void setMe(int me) {
-        this.me = me;
+    public void setLambda(int lambda) {
+        this.lambda = lambda;
     }
 
-    public Exponencial(int me,  boolean RndCong) {
-        this.me = me;
+    public Exponencial(double lambda,  boolean RndCong) {
+        this.lambda = lambda;
         
         if(RndCong){
             random = new RandomCong();
@@ -47,12 +47,13 @@ public class Exponencial implements IModeloDistr{
  
     @Override
     public double generarProximoNumero() {
-       return (-me)*(Math.log( 1-random.generarRandom()));
+       return (-1/lambda)*(Math.log( 1-random.generarRandom()));
     }
     
-     public boolean pruebaChi(int intervalos,LinkedList<Double> serie,double lambda,int cantidad)
+     public boolean pruebaChi(int intervalos,LinkedList<Double> serie,int cantidad)
     {
-        double tablaChi[]={3.84,5.99,7.81,9.49,11.1,12.6,14.1,15.5,16.9,18.3,19.7,21.0,22.4,23.7,25.0,26.3,27.6,28.9,30.1};
+        double tablaChi[]={3.84,5.99,7.81,9.49,11.1,12.6,14.1,15.5,16.9,18.3,
+            19.7,21.0,22.4,23.7,25.0,26.3,27.6,28.9,30.1};
         LinkedList<Double> fe=frecEsperada(intervalos,serie,lambda,cantidad);
         //LinkedList<Integer> fo=frecObtenida(intervalos,serie);
               

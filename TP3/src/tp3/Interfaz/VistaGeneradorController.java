@@ -8,6 +8,8 @@ import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.LineChart;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
 import javafx.scene.control.ListView;
 import javafx.scene.control.RadioButton;
@@ -28,6 +30,9 @@ public class VistaGeneradorController {
 
     @FXML
     private Button btnDistUnPrueb;
+    
+    @FXML
+    private Button btnDistUnLimp;
 
     @FXML
     private ListView<Double> LVDistUn;
@@ -67,6 +72,9 @@ public class VistaGeneradorController {
 
     @FXML
     private Button btnDistExpPrueb;
+    
+    @FXML
+    private Button btnDistExpLimp;
 
     @FXML
     private ListView<Double> LVDistExp;
@@ -103,6 +111,9 @@ public class VistaGeneradorController {
 
     @FXML
     private Button btnDistPoiPrueb;
+    
+    @FXML
+    private Button btnDistPoiLimp;
 
     @FXML
     private ListView<Double> LVDistPoi;
@@ -139,6 +150,10 @@ public class VistaGeneradorController {
 
     @FXML
     private Button btnDistNorPrueb;
+    
+    
+    @FXML
+    private Button btnDistNorLimp;
 
     @FXML
     private ListView<Double> LVDistNor;
@@ -166,7 +181,15 @@ public class VistaGeneradorController {
 
     @FXML
     private LineChart<?, ?> LChartDistNor;
-
+    
+    private Uniforme un;
+    private Exponencial exp;
+    private Poisson poi;
+    private Normal nor;
+    private LinkedList<Double> valoresUn;
+    private LinkedList<Double> valoresExp;
+    private LinkedList<Double> valoresPoi;
+    private LinkedList<Double> valoresNor;
     
     
     public void initialize(URL url, ResourceBundle rb) {
@@ -181,11 +204,11 @@ public class VistaGeneradorController {
         }else{
             flagRanCong = false;
         }
-        Uniforme un = new Uniforme(Integer.parseInt(txtDistUnA.getText()), 
+        this.un = new Uniforme(Integer.parseInt(txtDistUnA.getText()), 
                 Integer.parseInt(txtDistUnB.getText()), flagRanCong);
         
-        LinkedList<Double> valores = un.generarSerie(Integer.parseInt(txtDistUnCantVal.getText()));
-        ObservableList<Double> items =FXCollections.observableArrayList (valores);
+        this.valoresUn = un.generarSerie(Integer.parseInt(txtDistUnCantVal.getText()));
+        ObservableList<Double> items =FXCollections.observableArrayList (valoresUn);
         LVDistUn.setItems(items);
     }
     
@@ -198,10 +221,10 @@ public class VistaGeneradorController {
         }else{
             flagRanCong = false;
         }
-        Exponencial exp = new Exponencial(Integer.parseInt(txtDistExpLam.getText()),flagRanCong);
+        this.exp = new Exponencial(Integer.parseInt(txtDistExpLam.getText()),flagRanCong);
         
-        LinkedList<Double> valores = exp.generarSerie(Integer.parseInt(txtDistExpCantVal.getText()));
-        ObservableList<Double> items = FXCollections.observableArrayList (valores);
+        this.valoresExp = exp.generarSerie(Integer.parseInt(txtDistExpCantVal.getText()));
+        ObservableList<Double> items = FXCollections.observableArrayList (valoresExp);
         LVDistExp.setItems(items);
     }
     
@@ -214,10 +237,10 @@ public class VistaGeneradorController {
         }else{
             flagRanCong = false;
         }
-        Poisson poi = new Poisson(Integer.parseInt(txtDistPoiLam.getText()),flagRanCong);
+        this.poi = new Poisson(Integer.parseInt(txtDistPoiLam.getText()),flagRanCong);
         
-        LinkedList<Double> valores = poi.generarSerie(Integer.parseInt(txtDistPoiCantVal.getText()));
-        ObservableList<Double> items = FXCollections.observableArrayList (valores);
+        this.valoresPoi = poi.generarSerie(Integer.parseInt(txtDistPoiCantVal.getText()));
+        ObservableList<Double> items = FXCollections.observableArrayList (valoresPoi);
         LVDistPoi.setItems(items);
     }
     
@@ -230,12 +253,173 @@ public class VistaGeneradorController {
         }else{
             flagRanCong = false;
         }
-//        Normal nor = new Normal(Integer.parseInt(txtDistNorLam.getText()),flagRanCong);
-//        
-//        LinkedList<Double> valores = poi.generarSerie(Integer.parseInt(txtDistPoiCantVal.getText()));
-//        ObservableList<Double> items = FXCollections.observableArrayList (valores);
-//        LVDistPoi.setItems(items);
+        this.nor = new Normal(Integer.parseInt(txtDIstNorSig.getText()),
+                Integer.parseInt(txtDistNorMu.getText()), flagRanCong);
+        
+        this.valoresNor = nor.generarSerie(Integer.parseInt(txtDistNorCantVal.getText()));
+        ObservableList<Double> items = FXCollections.observableArrayList (valoresNor);
+        LVDistNor.setItems(items);
     }
     
+    @FXML
+    private void pruebaChiUn(ActionEvent event) {
+        if(un != null){
+            if(un.pruebaChi(Integer.parseInt(txtDistUnCantInt.getText()), valoresUn,
+                    Integer.parseInt(txtDistUnCantVal.getText()))){
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Prueba Chi");
+                alert.setHeaderText("La serie paso la prueba de Chi Cuadrado");
+                alert.setContentText("I have a great message for you!");
+
+                alert.showAndWait();
+                
+            }else{
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Prueba Chi");
+                alert.setHeaderText("La serie no paso la pruba de Chi Cuadrado");
+                alert.setContentText("Ooops, there was an error!");
+
+                alert.showAndWait();
+            }
+        }else{
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText("Debe generar una serie primero");
+            alert.setContentText("Careful with the next step!");
+
+            alert.showAndWait();
+        }
+    }
     
+    @FXML
+    private void pruebaChiExp(ActionEvent event) {
+        if(exp != null){
+            if(exp.pruebaChi(Integer.parseInt(txtDistExpCantInt.getText()), valoresExp,
+                    Integer.parseInt(txtDistExpCantVal.getText()))){
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Prueba Chi");
+                alert.setHeaderText("La serie paso la prueba de Chi Cuadrado");
+                alert.setContentText("I have a great message for you!");
+
+                alert.showAndWait();
+                
+            }else{
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Prueba Chi");
+                alert.setHeaderText("La serie no paso la pruba de Chi Cuadrado");
+                alert.setContentText("Ooops, there was an error!");
+
+                alert.showAndWait();
+            }
+        }else{
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText("Debe generar una serie primero");
+            alert.setContentText("Careful with the next step!");
+
+            alert.showAndWait();
+        }
+    }
+    
+    @FXML
+    private void pruebaChiPoi(ActionEvent event) {
+//        if(poi != null){
+//            if(poi.pruebaChi(Integer.parseInt(txtDistPoiCantInt.getText()), valoresPoi,
+//                    Integer.parseInt(txtDistPoiCantVal.getText()))){
+//                Alert alert = new Alert(AlertType.INFORMATION);
+//                alert.setTitle("Prueba Chi");
+//                alert.setHeaderText("La serie paso la prueba de Chi Cuadrado");
+//                alert.setContentText("I have a great message for you!");
+//
+//                alert.showAndWait();
+//                
+//            }else{
+//                Alert alert = new Alert(AlertType.ERROR);
+//                alert.setTitle("Prueba Chi");
+//                alert.setHeaderText("La serie no paso la pruba de Chi Cuadrado");
+//                alert.setContentText("Ooops, there was an error!");
+//
+//                alert.showAndWait();
+//            }else{
+//            Alert alert = new Alert(AlertType.WARNING);
+//            alert.setTitle("Advertencia");
+//            alert.setHeaderText("Debe generar una serie primero");
+//            alert.setContentText("Careful with the next step!");
+//
+//            alert.showAndWait();
+//        }
+//        }
+    }
+    
+    @FXML
+    private void pruebaChiNor(ActionEvent event) {
+        if(nor != null){
+            if(nor.pruebaChi(Integer.parseInt(txtDistNorCantInt.getText()), valoresNor,
+                    Integer.parseInt(txtDistNorCantVal.getText()))){
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Prueba Chi");
+                alert.setHeaderText("La serie paso la prueba de Chi Cuadrado");
+                alert.setContentText("I have a great message for you!");
+
+                alert.showAndWait();
+                
+            }else{
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Prueba Chi");
+                alert.setHeaderText("La serie no paso la pruba de Chi Cuadrado");
+                alert.setContentText("Ooops, there was an error!");
+
+                alert.showAndWait();
+            }
+        }else{
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText("Debe generar una serie primero");
+            alert.setContentText("Careful with the next step!");
+
+            alert.showAndWait();
+        }
+    }
+    
+    @FXML
+    private void limpiarSerieUn(ActionEvent event) {
+        txtDistUnA.setText("");
+        txtDistUnB.setText("");
+        txtDistUnCantInt.setText("");
+        txtDistUnCantVal.setText("");
+        valoresUn.clear();
+        LVDistUn.setItems(null);
+        un = null;
+    }
+    
+    @FXML
+    private void limpiarSerieExp(ActionEvent event) {
+        txtDistExpLam.setText("");
+        txtDistExpCantInt.setText("");
+        txtDistExpCantVal.setText("");
+        valoresExp.clear();
+        LVDistExp.setItems(null);
+        exp = null;
+    }
+    
+    @FXML
+    private void limpiarSeriePoi(ActionEvent event) {
+        txtDistPoiLam.setText("");
+        txtDistPoiCantInt.setText("");
+        txtDistPoiCantVal.setText("");
+        valoresPoi.clear();
+        LVDistPoi.setItems(null);
+        poi = null;
+    }
+    
+    @FXML
+    private void limpiarSerieNor(ActionEvent event) {
+        txtDIstNorSig.setText("");
+        txtDistNorMu.setText("");
+        txtDistNorCantInt.setText("");
+        txtDistNorCantVal.setText("");
+        valoresNor.clear();
+        LVDistNor.setItems(null);
+        nor = null;
+    }
 }
