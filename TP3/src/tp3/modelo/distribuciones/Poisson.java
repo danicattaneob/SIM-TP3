@@ -16,17 +16,17 @@ import tp3.modelo.random.RandomJava;
  */
 public class Poisson implements IModeloDistr{
     
-    private  double lamda;
+    private  double lambda;
     private double p;
     private double x;
     private double a;
     private RandomAbs random;
 
-    public Poisson(double lamda, boolean RndCong) {
-        this.lamda = lamda;
+    public Poisson(double lambda, boolean RndCong) {
+        this.lambda = lambda;
         this.p = 1;
         this.x = -1;
-        this.a = Math.pow(Math.E,(this.lamda*(-1)));
+        this.a = Math.pow(Math.E,(this.lambda*(-1)));
         
         if(RndCong){
             random = new RandomCong();
@@ -55,5 +55,65 @@ public class Poisson implements IModeloDistr{
         }while(this.p >= this.a);
        return x;       
     }
+    public boolean pruebaChi(int cantidad,int intervalos,LinkedList<Double> serie,int NP)
+    {
+        double tablaChi[]={3.84,5.99,7.81,9.49,11.1,12.6,14.1,15.5,16.9,18.3,19.7,21.0,22.4,23.7,25.0,26.3,27.6,28.9,30.1};
+        LinkedList<Double> fe=frecEsperada(intervalos,serie,cantidad,NP);
+        //LinkedList<Integer> fo=frecObtenida(intervalos,serie);
+        double res=0;
+        for (int i = 0; i < intervalos; i++) {
+            res+=fe.get(i);
+        }
+        if(res<tablaChi[intervalos-1]){
+            return true;
+        }else{
+            return false;
+        }
+    }
+    public LinkedList<Double> frecEsperada(int intervalos, LinkedList<Double> serie, int cantidad,int NP)
+    {
+    LinkedList<Double> listFE = new LinkedList<>();
+    LinkedList<Double> P=new LinkedList<>();
+        for (int i = 0; i < intervalos; i++) {
+            listFE.add(0.0);//Seteo en cero
+            P.add(0.0);
+        }
+        bubbleSort(serie);
+        double rango = serie.getLast() - serie.getFirst();
+        double amp = rango / intervalos;
+        double amplitud = Math.round(amp); //redondeo para que el intervalo contenga los primeros y ultimos 
+        
+            for (int j = 0; j < intervalos; j++) {
+                    P.set(j,((Math.pow(lambda,serie.getFirst()+amplitud*j)*Math.exp(-lambda))/factorial(serie.getFirst()+amplitud*j)));
+            }
+        for (int i = 0; i < intervalos; i++) {
+            listFE.set(i,(Math.floor(P.get(i)*NP)));            
+        }
+        return listFE;
+    }
+    public static long factorial(double number) {
+        long result = 1;
+
+        for (int factor = 2; factor <= number; factor++) {
+            result *= factor;
+        }
+
+        return result;
+    }
+ private void bubbleSort(LinkedList<Double> v) {
+        boolean ordenado = false;
+        int n = v.size();
+        for (int i = 0; i < n - 1 && !ordenado; i++) {
+            ordenado = true;
+            for (int j = 0; j < n - i - 1; j++) {
+                if (v.get(j) > v.get(j + 1)) {
+                    double aux = v.get(j);
+                    v.set(j, v.get(j + 1));
+                    v.set(j + 1, aux);
+                    ordenado = false;
+                }
+            }
+        }
+    }   
     
 }

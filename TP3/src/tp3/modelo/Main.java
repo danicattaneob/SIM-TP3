@@ -9,7 +9,8 @@ import tp3.modelo.random.RandomCong;
 import java.util.LinkedList;
 import tp3.modelo.distribuciones.Uniforme;
 import tp3.modelo.distribuciones.Exponencial;
-
+import tp3.modelo.distribuciones.Normal;
+import tp3.modelo.distribuciones.Poisson;
 /**
  *
  * @author valter
@@ -37,15 +38,22 @@ public class Main {
 //        ex.setC(3); //cte aditiva
 //        ex.setM(8);//modulo
 //        ex.setMe(5);
-        System.out.println(ex.generarSerie(10));
-        System.out.println(ex.pruebaChi(5, serie, 0.38, 100));
+        LinkedList<Double> serie2=ex.generarSerie(100);
+        System.out.println(serie2);
+        System.out.println(ex.pruebaChi(5, serie2, 0.38, 100));
 ////        ///////////////////////////////// NORMAL  
-//        Normal n = new Normal(2, 323, 4);
+         Normal n = new Normal(5.11, 1.33, false);
+         LinkedList<Double> serie3=n.generarSerie(100);
+         System.out.println(serie3);
+         System.out.println(n.pruebaChi(100, 5, serie3));
 ////      LinkedList l=n.generarSerie(1);
 ////      System.out.println(l.toString());
 ////      System.out.println("sida");
 //        System.out.println(n.generarSerie(10));
-
+Poisson p=new Poisson(15,false);
+LinkedList<Double> serie4=p.generarSerie(100);
+        System.out.println(serie4);
+        System.out.println(p.pruebaChi(100, 5, serie3, 50));
 //        RandomCong ran = new RandomCong();
 //        //System.out.println(ran.getNumeroPrimo());
 //        System.out.println("------------------/");

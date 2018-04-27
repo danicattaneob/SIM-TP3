@@ -55,6 +55,7 @@ public class Exponencial implements IModeloDistr{
         double tablaChi[]={3.84,5.99,7.81,9.49,11.1,12.6,14.1,15.5,16.9,18.3,19.7,21.0,22.4,23.7,25.0,26.3,27.6,28.9,30.1};
         LinkedList<Double> fe=frecEsperada(intervalos,serie,lambda,cantidad);
         //LinkedList<Integer> fo=frecObtenida(intervalos,serie);
+              
         double res=0;
         for (int i = 0; i < intervalos; i++) {
             res+=fe.get(i);
@@ -83,8 +84,7 @@ public class Exponencial implements IModeloDistr{
                     Pac.set(j,(1-Math.exp(-lambda*(serie.getFirst()+amplitud*(j+1)))-(1-Math.exp(-lambda*(serie.getFirst()+amplitud*(j))))));
             }
         for (int i = 0; i < intervalos; i++) {
-            listFE.set(i,cantidad*Pac.get(i));
-            
+            listFE.set(i,cantidad*Pac.get(i));            
         }
         return listFE;
     }
