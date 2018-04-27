@@ -19,10 +19,10 @@ import tp3.modelo.random.RandomJava;
 public class Uniforme implements IModeloDistr{
 
     private RandomAbs random;
-    private int a;//extremo intervalo
-    private int b;//extremo intervalo
+    private double a;//extremo intervalo
+    private double b;//extremo intervalo
     
-    public int getA() {
+    public double getA() {
         return a;
     }
 
@@ -30,7 +30,7 @@ public class Uniforme implements IModeloDistr{
         this.a = a;
     }
     
-    public int getB() {
+    public double getB() {
         return b;
     }
 
@@ -38,7 +38,7 @@ public class Uniforme implements IModeloDistr{
         this.b = b;
     }
 
-    public Uniforme(int a, int b, boolean RndCong) {
+    public Uniforme(double a, double b, boolean RndCong) {
         this.a = a;
         this.b = b;
         
@@ -51,7 +51,7 @@ public class Uniforme implements IModeloDistr{
     
     
     @Override
-        public LinkedList<Double> generarSerie(int cantidad) {
+        public LinkedList<Double> generarSerie(double cantidad) {
         LinkedList<Double> list = new LinkedList<>();
         for (int i = 0; i < cantidad; i++) {               
             list.add(generarProximoNumero());            
@@ -66,7 +66,7 @@ public class Uniforme implements IModeloDistr{
     }
     
     
-    public boolean pruebaChi(int intervalos,LinkedList<Double> serie,int cantidad)
+    public boolean pruebaChi(double intervalos,LinkedList<Double> serie,double cantidad)
     {   
         double tablaChi[]={3.84,5.99,7.81,9.49,11.1,12.6,14.1,15.5,16.9,18.3,19.7,21.0,22.4,23.7,25.0,26.3,27.6,28.9,30.1};
         double fe=serie.size()/intervalos;
@@ -75,7 +75,7 @@ public class Uniforme implements IModeloDistr{
         for (int i = 0; i < intervalos; i++) {
             res+=Math.pow(fo.get(i)-fe,2)/fe;            
         }
-        if(res<tablaChi[intervalos-1]){
+        if(res<tablaChi[(int)intervalos-1]){
             return true;
         }else{
             return false;
@@ -83,7 +83,7 @@ public class Uniforme implements IModeloDistr{
     }
     
     
-    public LinkedList<Integer> frecObtenida(int intervalos, LinkedList<Double> serie)
+    public LinkedList<Integer> frecObtenida(double intervalos, LinkedList<Double> serie)
     {
         LinkedList<Integer> listFO = new LinkedList<>();
         for (int i = 0; i < intervalos; i++) {
