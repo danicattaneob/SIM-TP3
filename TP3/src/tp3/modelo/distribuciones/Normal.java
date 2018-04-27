@@ -132,6 +132,7 @@ public class Normal implements IModeloDistr {
             for (int j = 0; j < intervalos; j++) {
                 if (serie.get(i) >= (serie.getFirst() + amplitud * j) && serie.get(i) < (serie.getFirst() + amplitud * (j + 1))) {
                     listFO.set(j, listFO.get(j)+1);
+                    break;
                 }
             }
         }

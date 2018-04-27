@@ -46,10 +46,10 @@
                                 </rowConstraints>
                                  <children>
                                   <Button fx:id="btnDistUnGen" mnemonicParsing="false" onAction="#generarSerieDistUn" prefHeight="25.0" prefWidth="86.0" text="Generar " GridPane.rowIndex="1" />
-                                    <Button fx:id="btnDistUnGra" mnemonicParsing="false" onAction="#graficarSerieUn" prefHeight="25.0" prefWidth="116.0" text="Graficar" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                    <Button fx:id="btnDistUniOc" mnemonicParsing="false" onAction="#OcultarGrafUn" prefHeight="25.0" prefWidth="104.0" text="Ocultar" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                     <Button fx:id="btnDistUnPrueb" mnemonicParsing="false" onAction="#pruebaChiUn" text="Prueba Chi" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Button fx:id="btnDistUnGra" mnemonicParsing="false" onAction="#graficarSerieUn" prefHeight="25.0" prefWidth="116.0" text="Graficar" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                                     <Button fx:id="btnDistUnLimp" mnemonicParsing="false" onAction="#limpiarSerieUn" prefHeight="25.0" prefWidth="117.0" text="Limpiar" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                                    <Button fx:id="btnDistUniOc" mnemonicParsing="false" onAction="#OcultarGrafUn" prefHeight="25.0" prefWidth="104.0" text="Ocultar" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                           </buttons>
@@ -103,8 +103,6 @@
                            <children>
                               <Label text="A:" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                               <Label text="B:" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                              <TextField fx:id="txtDistUnA" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                              <TextField fx:id="txtDistUnB" GridPane.columnIndex="2" GridPane.rowIndex="9" />
                               <Label prefHeight="17.0" prefWidth="109.0" text="Metodo aleatorio:" />
                               <RadioButton fx:id="rdbDistUnJava" mnemonicParsing="false" selected="true" text="Java" GridPane.columnIndex="2">
                                  <toggleGroup>
@@ -115,6 +113,8 @@
                               <Label text="Cantidad intervalos:" GridPane.rowIndex="6" />
                               <TextField fx:id="txtDistUnCantVal" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                               <TextField fx:id="txtDistUnCantInt" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                              <TextField fx:id="txtDistUnA" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                              <TextField fx:id="txtDistUnB" GridPane.columnIndex="2" GridPane.rowIndex="9" />
                            </children>
                         </GridPane>
                      </left>
@@ -154,11 +154,11 @@
                                     <RowConstraints maxHeight="56.0" minHeight="10.0" prefHeight="43.0" vgrow="SOMETIMES" />
                                  </rowConstraints>
                                  <children>
-                                    <Button fx:id="btnDistExpGen" mnemonicParsing="false" onAction="#generarSerieDistExp" prefHeight="25.0" prefWidth="86.0" text="Generar " GridPane.rowIndex="1" />
-                                    <Button fx:id="btnDistExpGra" mnemonicParsing="false" onAction="#graficarSerieExp" prefHeight="25.0" prefWidth="116.0" text="Graficar" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                    <Button fx:id="btnDistExpOc" mnemonicParsing="false" onAction="#OcultarGrafExp" prefHeight="25.0" prefWidth="104.0" text="Ocultar" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                     <Button fx:id="btnDistExpPrueb" mnemonicParsing="false" onAction="#pruebaChiExp" text="Prueba Chi" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Button fx:id="btnDistExpGra" mnemonicParsing="false" onAction="#graficarSerieExp" prefHeight="25.0" prefWidth="116.0" text="Graficar" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                                     <Button fx:id="btnDistExpLimp" mnemonicParsing="false" onAction="#limpiarSerieExp" prefHeight="25.0" prefWidth="123.0" text="Limpiar" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                                    <Button fx:id="btnDistExpGen" mnemonicParsing="false" onAction="#generarSerieDistExp" prefHeight="25.0" prefWidth="86.0" text="Generar " GridPane.rowIndex="1" />
+                                    <Button fx:id="btnDistExpOc" mnemonicParsing="false" onAction="#OcultarGrafExp" prefHeight="25.0" prefWidth="104.0" text="Ocultar" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                            </buttons>
@@ -210,7 +210,6 @@
                            </rowConstraints>
                            <children>
                               <Label text="λ:" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                              <TextField fx:id="txtDistExpLam" GridPane.columnIndex="2" GridPane.rowIndex="8" />
                               <Label prefHeight="17.0" prefWidth="109.0" text="Metodo aleatorio:" />
                               <RadioButton fx:id="rdbDistExpJava" mnemonicParsing="false" selected="true" text="Java" GridPane.columnIndex="2">
                                  <toggleGroup>
@@ -222,6 +221,7 @@
                               <Label text="Cantidad intervalos:" GridPane.rowIndex="6" />
                               <TextField fx:id="txtDistExpCantVal" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                               <TextField fx:id="txtDistExpCantInt" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                              <TextField fx:id="txtDistExpLam" GridPane.columnIndex="2" GridPane.rowIndex="8" />
                            </children>
                         </GridPane>
                      </left>
@@ -263,10 +263,10 @@
                                  </rowConstraints>
                                  <children>
                                     <Button fx:id="btnDistPoiGen" mnemonicParsing="false" onAction="#generarSeriePoi" prefHeight="25.0" prefWidth="86.0" text="Generar " GridPane.rowIndex="1" />
-                                    <Button fx:id="btnDistPoiGra" mnemonicParsing="false" onAction="#graficarSeriePoi" prefHeight="25.0" prefWidth="116.0" text="Graficar" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                    <Button fx:id="btnDistPoiOc" mnemonicParsing="false" onAction="#OcultarGrafPoi" prefHeight="25.0" prefWidth="104.0" text="Ocultar" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                     <Button fx:id="btnDistPoiPrueb" mnemonicParsing="false" onAction="#pruebaChiPoi" text="Prueba Chi" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Button fx:id="btnDistPoiGra" mnemonicParsing="false" onAction="#graficarSeriePoi" prefHeight="25.0" prefWidth="116.0" text="Graficar" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                                     <Button fx:id="btnDistPoiLimp" mnemonicParsing="false" onAction="#limpiarSeriePoi" prefHeight="25.0" prefWidth="122.0" text="Limpiar" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                                    <Button fx:id="btnDistPoiOc" mnemonicParsing="false" onAction="#OcultarGrafPoi" prefHeight="25.0" prefWidth="104.0" text="Ocultar" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                            </buttons>
@@ -318,7 +318,6 @@
                            </rowConstraints>
                            <children>
                               <Label text="λ:" GridPane.columnIndex="1" GridPane.rowIndex="8" />
-                              <TextField fx:id="txtDistPoiLam" GridPane.columnIndex="2" GridPane.rowIndex="8" />
                               <Label prefHeight="17.0" prefWidth="109.0" text="Metodo aleatorio:" />
                               <RadioButton fx:id="rdbDistPoiJava" mnemonicParsing="false" selected="true" text="Java" GridPane.columnIndex="2">
                                  <toggleGroup>
@@ -330,6 +329,7 @@
                               <Label text="Cantidad intervalos:" GridPane.rowIndex="6" />
                               <TextField fx:id="txtDistPoiCantVal" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                               <TextField fx:id="txtDistPoiCantInt" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                              <TextField fx:id="txtDistPoiLam" GridPane.columnIndex="2" GridPane.rowIndex="8" />
                            </children>
                         </GridPane>
                      </left>
@@ -371,10 +371,10 @@
                                  </rowConstraints>
                                  <children>
                                     <Button fx:id="btnDistNorGen" mnemonicParsing="false" onAction="#generarSerieDistNor" prefHeight="25.0" prefWidth="86.0" text="Generar " GridPane.rowIndex="1" />
-                                    <Button fx:id="btnDistNorGra" mnemonicParsing="false" onAction="#graficarSerieNor" prefHeight="25.0" prefWidth="116.0" text="Graficar" GridPane.columnIndex="4" GridPane.rowIndex="1" />
-                                    <Button fx:id="btnDistNorOc" mnemonicParsing="false" onAction="#OcultarGrafNor" prefHeight="25.0" prefWidth="104.0" text="Ocultar" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                     <Button fx:id="btnDistNorPrueb" mnemonicParsing="false" onAction="#pruebaChiNor" text="Prueba Chi" GridPane.columnIndex="2" GridPane.rowIndex="1" />
+                                    <Button fx:id="btnDistNorGra" mnemonicParsing="false" onAction="#graficarSerieNor" prefHeight="25.0" prefWidth="116.0" text="Graficar" GridPane.columnIndex="4" GridPane.rowIndex="1" />
                                     <Button fx:id="btnDistNorLimp" mnemonicParsing="false" onAction="#limpiarSerieNor" prefHeight="25.0" prefWidth="130.0" text="Limpiar" GridPane.columnIndex="6" GridPane.rowIndex="1" />
+                                    <Button fx:id="btnDistNorOc" mnemonicParsing="false" onAction="#OcultarGrafNor" prefHeight="25.0" prefWidth="104.0" text="Ocultar" visible="false" GridPane.columnIndex="3" GridPane.rowIndex="2" />
                                  </children>
                               </GridPane>
                            </buttons>
@@ -428,8 +428,6 @@
                            <children>
                               <Label text="μ:" GridPane.columnIndex="1" GridPane.rowIndex="8" />
                               <Label text="σ:" GridPane.columnIndex="1" GridPane.rowIndex="9" />
-                              <TextField fx:id="txtDistNorMu" GridPane.columnIndex="2" GridPane.rowIndex="8" />
-                              <TextField fx:id="txtDIstNorSig" GridPane.columnIndex="2" GridPane.rowIndex="9" />
                               <Label prefHeight="17.0" prefWidth="109.0" text="Metodo aleatorio:" />
                               <RadioButton fx:id="rdbDistNorJava" mnemonicParsing="false" selected="true" text="Java" GridPane.columnIndex="2">
                                  <toggleGroup>
@@ -441,6 +439,8 @@
                               <Label text="Cantidad intervalos:" GridPane.rowIndex="6" />
                               <TextField fx:id="txtDistNorCantVal" GridPane.columnIndex="2" GridPane.rowIndex="4" />
                               <TextField fx:id="txtDistNorCantInt" GridPane.columnIndex="2" GridPane.rowIndex="6" />
+                              <TextField fx:id="txtDistNorMu" GridPane.columnIndex="2" GridPane.rowIndex="8" />
+                              <TextField fx:id="txtDIstNorSig" GridPane.columnIndex="2" GridPane.rowIndex="9" />
                            </children>
                         </GridPane>
                      </left>

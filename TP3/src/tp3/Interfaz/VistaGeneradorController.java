@@ -450,6 +450,7 @@ public class VistaGeneradorController {
             XYChart.Series dataSeriesDistUn = new XYChart.Series();
             dataSeriesDistUn.setName("Dist Un");
             frecUn = un.frecObtenida(Integer.parseInt(txtDistUnCantInt.getText()), valoresUn);
+            //System.out.println(frecUn);
             for (int i = 0; i < frecUn.size(); i++) {
                 dataSeriesDistUn.getData().add(new XYChart.Data(String.valueOf(i),frecUn.get(i)));;
             }
@@ -470,6 +471,7 @@ public class VistaGeneradorController {
             XYChart.Series dataSeriesDistExp = new XYChart.Series();
             dataSeriesDistExp.setName("Dist Exp");
             frecExp = exp.frecObtenida(Integer.parseInt(txtDistExpCantInt.getText()), valoresExp);
+            //System.out.println(frecExp);
             for (int i = 0; i < frecExp.size(); i++) {
                 dataSeriesDistExp.getData().add(new XYChart.Data(String.valueOf(i),frecExp.get(i)));;
             }
@@ -489,6 +491,7 @@ public class VistaGeneradorController {
             XYChart.Series dataSeriesDistPoi = new XYChart.Series();
             dataSeriesDistPoi.setName("Dist Poi");
             frecPoi = poi.frecObtenida(Integer.parseInt(txtDistPoiCantInt.getText()), valoresPoi);
+            //System.out.println(frecPoi);
             for (int i = 0; i < frecPoi.size(); i++) {
                 dataSeriesDistPoi.getData().add(new XYChart.Data(String.valueOf(i),frecPoi.get(i)));;
             }
@@ -508,6 +511,7 @@ public class VistaGeneradorController {
             XYChart.Series dataSeriesDistNor = new XYChart.Series();
             dataSeriesDistNor.setName("Dist Nor");
             frecNor = nor.frecObtenida(Integer.parseInt(txtDistNorCantInt.getText()), valoresNor);
+            System.out.println(frecNor);
             for (int i = 0; i < frecNor.size(); i++) {
                 dataSeriesDistNor.getData().add(new XYChart.Data(String.valueOf(i),frecNor.get(i)));;
             }

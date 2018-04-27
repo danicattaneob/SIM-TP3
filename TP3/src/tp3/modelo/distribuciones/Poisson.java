@@ -113,8 +113,10 @@ public class Poisson implements IModeloDistr{
         double amplitud = Math.round(amp); //redondeo para que el intervalo contenga los primeros y ultimos 
         for (int i = 0; i < serie.size(); i++) {
             for (int j = 0; j < intervalos; j++) {
-                if (serie.get(i) >= (serie.getFirst() + amplitud * j) && serie.get(i) < (serie.getFirst() + amplitud * (j + 1))) {
+                if (serie.get(i) >= (serie.getFirst() + amplitud * j) 
+                        && serie.get(i) < (serie.getFirst() + amplitud * (j + 1))) {
                     listFO.set(j, listFO.get(j)+1);
+                    break;
                 }
             }
         }
