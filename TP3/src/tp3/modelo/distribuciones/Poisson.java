@@ -48,13 +48,17 @@ public class Poisson implements IModeloDistr{
  
     @Override
     public double generarProximoNumero() {
-        do{
-            double u = (random.generarRandom());
-            this.p = p * u;
-            this.x = x + 1;
-        }while(this.p >= this.a);
-       return x;       
+    double L = Math.exp(-lambda);
+    double p = 1.0;
+    int k = 0;
+
+    do {
+        k++;
+        p *= Math.random();
+    } while (p > L);
+    return k - 1;      
     }
+    
     public boolean pruebaChi(int intervalos,LinkedList<Double> serie,int cantidad)
     {
         double tablaChi[]={3.84,5.99,7.81,9.49,11.1,12.6,14.1,15.5,16.9,18.3,19.7,21.0,22.4,23.7,25.0,26.3,27.6,28.9,30.1};

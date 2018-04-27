@@ -9,6 +9,7 @@ import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
 import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
+import javafx.scene.chart.XYChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
 import javafx.scene.control.Button;
@@ -58,9 +59,6 @@ public class VistaGeneradorController {
 
     @FXML
     private TextField txtDistUnCantInt;
-
-    @FXML
-    private LineChart<Double, Double> LChartDistUni;
     
     @FXML
     private BarChart<Double, Double> brChDistUn;
@@ -102,7 +100,7 @@ public class VistaGeneradorController {
     private TextField txtDistExpCantInt;
 
     @FXML
-    private LineChart<Double, Double> LChartDistExp;
+    private BarChart<Double, Double> brChDistExp;
 
     @FXML
     private Button btnDistPoiGen;
@@ -141,7 +139,7 @@ public class VistaGeneradorController {
     private TextField txtDistPoiCantInt;
 
     @FXML
-    private LineChart<Double, Double> LChartDistPoi;
+    private BarChart<Double, Double> brChDistPoi;
 
     @FXML
     private Button btnDistNorGen;
@@ -154,7 +152,6 @@ public class VistaGeneradorController {
 
     @FXML
     private Button btnDistNorPrueb;
-    
     
     @FXML
     private Button btnDistNorLimp;
@@ -184,8 +181,8 @@ public class VistaGeneradorController {
     private TextField txtDistNorCantInt;
 
     @FXML
-    private LineChart<Double, Double> LChartDistNor;
-    
+    private BarChart<Double, Double> brChDistNor;
+
     private Uniforme un;
     private Exponencial exp;
     private Poisson poi;
@@ -198,6 +195,10 @@ public class VistaGeneradorController {
     private LinkedList<Integer> frecExp;
     private LinkedList<Integer> frecPoi;
     private LinkedList<Integer> frecNor;
+    private boolean flagGrafUn = false;
+    private boolean flagGrafExp = false;
+    private boolean flagGrafPoi = false;
+    private boolean flagGrafNor = false;
     
     
     public void initialize(URL url, ResourceBundle rb) {
@@ -206,6 +207,7 @@ public class VistaGeneradorController {
     
     @FXML
     private void generarSerieDistUn(ActionEvent event) {
+        flagGrafUn = false;
         boolean flagRanCong;
         if(rdbDistUnCong.isSelected()){
             flagRanCong = true;
@@ -223,6 +225,7 @@ public class VistaGeneradorController {
     
     @FXML
     private void generarSerieDistExp(ActionEvent event) {
+        flagGrafExp = false;
         boolean flagRanCong;
         if(rdbDistExpCong.isSelected()){
             flagRanCong = true;
@@ -239,6 +242,7 @@ public class VistaGeneradorController {
     
     @FXML
     private void generarSeriePoi(ActionEvent event) {
+        flagGrafPoi = false;
         boolean flagRanCong;
         if(rdbDistPoiCong.isSelected()){
             flagRanCong = true;
@@ -255,6 +259,7 @@ public class VistaGeneradorController {
     
     @FXML
     private void generarSerieDistNor(ActionEvent event) {
+        flagGrafNor = false;
         boolean flagRanCong;
         if(rdbDistNorCong.isSelected()){
             flagRanCong = true;
@@ -391,6 +396,7 @@ public class VistaGeneradorController {
     
     @FXML
     private void limpiarSerieUn(ActionEvent event) {
+        flagGrafUn = false;
         txtDistUnA.setText("");
         txtDistUnB.setText("");
         txtDistUnCantInt.setText("");
@@ -402,6 +408,7 @@ public class VistaGeneradorController {
     
     @FXML
     private void limpiarSerieExp(ActionEvent event) {
+        flagGrafExp = false;
         txtDistExpLam.setText("");
         txtDistExpCantInt.setText("");
         txtDistExpCantVal.setText("");
@@ -412,6 +419,7 @@ public class VistaGeneradorController {
     
     @FXML
     private void limpiarSeriePoi(ActionEvent event) {
+        flagGrafPoi = false;
         txtDistPoiLam.setText("");
         txtDistPoiCantInt.setText("");
         txtDistPoiCantVal.setText("");
@@ -422,6 +430,7 @@ public class VistaGeneradorController {
     
     @FXML
     private void limpiarSerieNor(ActionEvent event) {
+        flagGrafNor = false;
         txtDIstNorSig.setText("");
         txtDistNorMu.setText("");
         txtDistNorCantInt.setText("");
@@ -433,22 +442,98 @@ public class VistaGeneradorController {
     
     @FXML
     private void graficarSerieUn(ActionEvent event) {
-        frecUn = un.frecObtenida(Integer.parseInt(txtDistUnCantInt.getText()), valoresUn);
-        for (int i = 0; i < frecUn.size(); i++) {
-            ;
-            
+        if(flagGrafUn){
+           brChDistUn.setVisible(true); 
+        }else{
+            brChDistUn.getData().clear();
+            brChDistUn.setVisible(true);
+            XYChart.Series dataSeriesDistUn = new XYChart.Series();
+            dataSeriesDistUn.setName("Dist Un");
+            frecUn = un.frecObtenida(Integer.parseInt(txtDistUnCantInt.getText()), valoresUn);
+            for (int i = 0; i < frecUn.size(); i++) {
+                dataSeriesDistUn.getData().add(new XYChart.Data(String.valueOf(i),frecUn.get(i)));;
+            }
+            brChDistUn.getData().add(dataSeriesDistUn);
+            btnDistUniOc.setVisible(true);
+            flagGrafUn = true;
         }
+        
     }
     
     @FXML
     private void graficarSerieExp(ActionEvent event) {
+        if(flagGrafExp){
+           brChDistExp.setVisible(true); 
+        }else{
+            brChDistExp.getData().clear();
+            brChDistExp.setVisible(true);
+            XYChart.Series dataSeriesDistExp = new XYChart.Series();
+            dataSeriesDistExp.setName("Dist Exp");
+            frecExp = exp.frecObtenida(Integer.parseInt(txtDistExpCantInt.getText()), valoresExp);
+            for (int i = 0; i < frecExp.size(); i++) {
+                dataSeriesDistExp.getData().add(new XYChart.Data(String.valueOf(i),frecExp.get(i)));;
+            }
+            brChDistExp.getData().add(dataSeriesDistExp);
+            btnDistExpOc.setVisible(true);
+            flagGrafExp = true;
+        }
     }
     
     @FXML
     private void graficarSeriePoi(ActionEvent event) {
+        if(flagGrafPoi){
+           brChDistPoi.setVisible(true); 
+        }else{
+            brChDistPoi.getData().clear();
+            brChDistPoi.setVisible(true);
+            XYChart.Series dataSeriesDistPoi = new XYChart.Series();
+            dataSeriesDistPoi.setName("Dist Poi");
+            frecPoi = poi.frecObtenida(Integer.parseInt(txtDistPoiCantInt.getText()), valoresPoi);
+            for (int i = 0; i < frecPoi.size(); i++) {
+                dataSeriesDistPoi.getData().add(new XYChart.Data(String.valueOf(i),frecPoi.get(i)));;
+            }
+            brChDistPoi.getData().add(dataSeriesDistPoi);
+            btnDistPoiOc.setVisible(true);
+            flagGrafPoi = true;
+        }
     }
     
     @FXML
     private void graficarSerieNor(ActionEvent event) {
+        if(flagGrafNor){
+           brChDistNor.setVisible(true); 
+        }else{
+            brChDistNor.getData().clear();
+            brChDistNor.setVisible(true);
+            XYChart.Series dataSeriesDistNor = new XYChart.Series();
+            dataSeriesDistNor.setName("Dist Nor");
+            frecNor = nor.frecObtenida(Integer.parseInt(txtDistNorCantInt.getText()), valoresNor);
+            for (int i = 0; i < frecNor.size(); i++) {
+                dataSeriesDistNor.getData().add(new XYChart.Data(String.valueOf(i),frecNor.get(i)));;
+            }
+            brChDistNor.getData().add(dataSeriesDistNor);
+            btnDistNorOc.setVisible(true);
+            flagGrafNor = true;
+        }
+    }
+    
+    @FXML
+    private void OcultarGrafUn(ActionEvent event) {
+        brChDistUn.setVisible(false);
+    }
+    
+    @FXML
+    private void OcultarGrafExp(ActionEvent event) {
+        brChDistExp.setVisible(false);
+    }
+    
+    @FXML
+    private void OcultarGrafPoi(ActionEvent event) {
+        brChDistPoi.setVisible(false);
+    }
+    
+    @FXML
+    private void OcultarGrafNor(ActionEvent event) {
+        brChDistNor.setVisible(false);
     }
 }
