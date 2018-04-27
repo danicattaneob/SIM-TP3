@@ -214,10 +214,10 @@ public class VistaGeneradorController {
         }else{
             flagRanCong = false;
         }
-        this.un = new Uniforme(Integer.parseInt(txtDistUnA.getText()), 
-                Integer.parseInt(txtDistUnB.getText()), flagRanCong);
+        this.un = new Uniforme(Double.parseDouble(txtDistUnA.getText()), 
+                Double.parseDouble(txtDistUnB.getText()), flagRanCong);
         
-        this.valoresUn = un.generarSerie(Integer.parseInt(txtDistUnCantVal.getText()));
+        this.valoresUn = un.generarSerie(Double.parseDouble(txtDistUnCantVal.getText()));
         ObservableList<Double> items =FXCollections.observableArrayList (valoresUn);
         LVDistUn.setItems(items);
     }
@@ -232,9 +232,9 @@ public class VistaGeneradorController {
         }else{
             flagRanCong = false;
         }
-        this.exp = new Exponencial(Integer.parseInt(txtDistExpLam.getText()),flagRanCong);
+        this.exp = new Exponencial(Double.parseDouble(txtDistExpLam.getText()),flagRanCong);
         
-        this.valoresExp = exp.generarSerie(Integer.parseInt(txtDistExpCantVal.getText()));
+        this.valoresExp = exp.generarSerie(Double.parseDouble(txtDistExpCantVal.getText()));
         ObservableList<Double> items = FXCollections.observableArrayList (valoresExp);
         LVDistExp.setItems(items);
     }
@@ -249,9 +249,9 @@ public class VistaGeneradorController {
         }else{
             flagRanCong = false;
         }
-        this.poi = new Poisson(Integer.parseInt(txtDistPoiLam.getText()),flagRanCong);
+        this.poi = new Poisson(Double.parseDouble(txtDistPoiLam.getText()),flagRanCong);
         
-        this.valoresPoi = poi.generarSerie(Integer.parseInt(txtDistPoiCantVal.getText()));
+        this.valoresPoi = poi.generarSerie(Double.parseDouble(txtDistPoiCantVal.getText()));
         ObservableList<Double> items = FXCollections.observableArrayList (valoresPoi);
         LVDistPoi.setItems(items);
     }
@@ -266,10 +266,10 @@ public class VistaGeneradorController {
         }else{
             flagRanCong = false;
         }
-        this.nor = new Normal(Integer.parseInt(txtDIstNorSig.getText()),
-                Integer.parseInt(txtDistNorMu.getText()), flagRanCong);
+        this.nor = new Normal(Double.parseDouble(txtDIstNorSig.getText()),
+                Double.parseDouble(txtDistNorMu.getText()), flagRanCong);
         
-        this.valoresNor = nor.generarSerie(Integer.parseInt(txtDistNorCantVal.getText()));
+        this.valoresNor = nor.generarSerie(Double.parseDouble(txtDistNorCantVal.getText()));
         ObservableList<Double> items = FXCollections.observableArrayList (valoresNor);
         LVDistNor.setItems(items);
     }
@@ -277,8 +277,8 @@ public class VistaGeneradorController {
     @FXML
     private void pruebaChiUn(ActionEvent event) {
         if(un != null){
-            if(un.pruebaChi(Integer.parseInt(txtDistUnCantInt.getText()), valoresUn,
-                    Integer.parseInt(txtDistUnCantVal.getText()))){
+            if(un.pruebaChi(Double.parseDouble(txtDistUnCantInt.getText()), valoresUn,
+                    Double.parseDouble(txtDistUnCantVal.getText()))){
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Prueba Chi");
                 alert.setHeaderText("La serie paso la prueba de Chi Cuadrado");
@@ -307,8 +307,8 @@ public class VistaGeneradorController {
     @FXML
     private void pruebaChiExp(ActionEvent event) {
         if(exp != null){
-            if(exp.pruebaChi(Integer.parseInt(txtDistExpCantInt.getText()), valoresExp,
-                    Integer.parseInt(txtDistExpCantVal.getText()))){
+            if(exp.pruebaChi(Double.parseDouble(txtDistExpCantInt.getText()), valoresExp,
+                    Double.parseDouble(txtDistExpCantVal.getText()))){
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Prueba Chi");
                 alert.setHeaderText("La serie paso la prueba de Chi Cuadrado");
@@ -337,8 +337,8 @@ public class VistaGeneradorController {
     @FXML
     private void pruebaChiPoi(ActionEvent event) {
         if(poi != null){
-            if(poi.pruebaChi(Integer.parseInt(txtDistPoiCantInt.getText()), valoresPoi,
-                    Integer.parseInt(txtDistPoiCantVal.getText()))){
+            if(poi.pruebaChi(Double.parseDouble(txtDistPoiCantInt.getText()), valoresPoi,
+                    Double.parseDouble(txtDistPoiCantVal.getText()))){
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Prueba Chi");
                 alert.setHeaderText("La serie paso la prueba de Chi Cuadrado");
@@ -367,8 +367,8 @@ public class VistaGeneradorController {
     @FXML
     private void pruebaChiNor(ActionEvent event) {
         if(nor != null){
-            if(nor.pruebaChi(Integer.parseInt(txtDistNorCantInt.getText()), valoresNor,
-                    Integer.parseInt(txtDistNorCantVal.getText()))){
+            if(nor.pruebaChi(Double.parseDouble(txtDistNorCantInt.getText()), valoresNor,
+                    Double.parseDouble(txtDistNorCantVal.getText()))){
                 Alert alert = new Alert(AlertType.INFORMATION);
                 alert.setTitle("Prueba Chi");
                 alert.setHeaderText("La serie paso la prueba de Chi Cuadrado");
@@ -449,8 +449,12 @@ public class VistaGeneradorController {
             brChDistUn.setVisible(true);
             XYChart.Series dataSeriesDistUn = new XYChart.Series();
             dataSeriesDistUn.setName("Dist Un");
+<<<<<<< HEAD
             frecUn = un.frecObtenida(Integer.parseInt(txtDistUnCantInt.getText()), valoresUn);
             //System.out.println(frecUn);
+=======
+            frecUn = un.frecObtenida(Double.parseDouble(txtDistUnCantInt.getText()), valoresUn);
+>>>>>>> a489e86659d714f2c70dd6fb67f0a0967f58d231
             for (int i = 0; i < frecUn.size(); i++) {
                 dataSeriesDistUn.getData().add(new XYChart.Data(String.valueOf(i),frecUn.get(i)));;
             }
@@ -470,8 +474,12 @@ public class VistaGeneradorController {
             brChDistExp.setVisible(true);
             XYChart.Series dataSeriesDistExp = new XYChart.Series();
             dataSeriesDistExp.setName("Dist Exp");
+<<<<<<< HEAD
             frecExp = exp.frecObtenida(Integer.parseInt(txtDistExpCantInt.getText()), valoresExp);
             //System.out.println(frecExp);
+=======
+            frecExp = exp.frecObtenida(Double.parseDouble(txtDistExpCantInt.getText()), valoresExp);
+>>>>>>> a489e86659d714f2c70dd6fb67f0a0967f58d231
             for (int i = 0; i < frecExp.size(); i++) {
                 dataSeriesDistExp.getData().add(new XYChart.Data(String.valueOf(i),frecExp.get(i)));;
             }
@@ -490,8 +498,12 @@ public class VistaGeneradorController {
             brChDistPoi.setVisible(true);
             XYChart.Series dataSeriesDistPoi = new XYChart.Series();
             dataSeriesDistPoi.setName("Dist Poi");
+<<<<<<< HEAD
             frecPoi = poi.frecObtenida(Integer.parseInt(txtDistPoiCantInt.getText()), valoresPoi);
             //System.out.println(frecPoi);
+=======
+            frecPoi = poi.frecObtenida(Double.parseDouble(txtDistPoiCantInt.getText()), valoresPoi);
+>>>>>>> a489e86659d714f2c70dd6fb67f0a0967f58d231
             for (int i = 0; i < frecPoi.size(); i++) {
                 dataSeriesDistPoi.getData().add(new XYChart.Data(String.valueOf(i),frecPoi.get(i)));;
             }
@@ -510,8 +522,12 @@ public class VistaGeneradorController {
             brChDistNor.setVisible(true);
             XYChart.Series dataSeriesDistNor = new XYChart.Series();
             dataSeriesDistNor.setName("Dist Nor");
+<<<<<<< HEAD
             frecNor = nor.frecObtenida(Integer.parseInt(txtDistNorCantInt.getText()), valoresNor);
             System.out.println(frecNor);
+=======
+            frecNor = nor.frecObtenida(Double.parseDouble(txtDistNorCantInt.getText()), valoresNor);
+>>>>>>> a489e86659d714f2c70dd6fb67f0a0967f58d231
             for (int i = 0; i < frecNor.size(); i++) {
                 dataSeriesDistNor.getData().add(new XYChart.Data(String.valueOf(i),frecNor.get(i)));;
             }

@@ -13,10 +13,10 @@ import java.util.LinkedList;
  */
 public interface IModeloDistr {
     
-    public LinkedList<Double> generarSerie(int cantidad);
+    public LinkedList<Double> generarSerie(double  cantidad);
     public double generarProximoNumero();
-    public boolean pruebaChi(int intervalos,LinkedList<Double> serie,int cantidad);
-    public LinkedList<Integer> frecObtenida(int intervalos, LinkedList<Double> serie);
+    public boolean pruebaChi(double  intervalos,LinkedList<Double> serie,double  cantidad);
+    public LinkedList<Integer> frecObtenida(double  intervalos, LinkedList<Double> serie);
     
     
     

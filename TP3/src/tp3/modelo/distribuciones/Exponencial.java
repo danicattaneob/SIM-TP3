@@ -36,7 +36,7 @@ public class Exponencial implements IModeloDistr{
     
     
     @Override
-    public LinkedList<Double> generarSerie( int cantidad) {
+    public LinkedList<Double> generarSerie( double cantidad) {
         LinkedList<Double> list = new LinkedList<>();
        
         for (int i = 0; i < cantidad; i++) {            
@@ -50,7 +50,7 @@ public class Exponencial implements IModeloDistr{
        return (-1/lambda)*(Math.log( 1-random.generarRandom()));
     }
     
-     public boolean pruebaChi(int intervalos,LinkedList<Double> serie,int cantidad)
+     public boolean pruebaChi(double intervalos,LinkedList<Double> serie,double cantidad)
     {
         double tablaChi[]={3.84,5.99,7.81,9.49,11.1,12.6,14.1,15.5,16.9,18.3,
             19.7,21.0,22.4,23.7,25.0,26.3,27.6,28.9,30.1};
@@ -61,14 +61,14 @@ public class Exponencial implements IModeloDistr{
         for (int i = 0; i < intervalos; i++) {
             res+=fe.get(i);
         }
-        if(res<tablaChi[intervalos-1]){
+        if(res<tablaChi[(int)intervalos-1]){
             return true;
         }else{
             return false;
         }
     }
     
-    public LinkedList<Double> frecEsperada(int intervalos, LinkedList<Double> serie, double lambda,int cantidad)
+    public LinkedList<Double> frecEsperada(double intervalos, LinkedList<Double> serie, double lambda,double cantidad)
     {
     LinkedList<Double> listFE = new LinkedList<>();
     LinkedList<Double> Pac=new LinkedList<>();
@@ -90,7 +90,7 @@ public class Exponencial implements IModeloDistr{
         return listFE;
     }
     
-    public LinkedList<Integer> frecObtenida(int intervalos, LinkedList<Double> serie)
+    public LinkedList<Integer> frecObtenida(double intervalos, LinkedList<Double> serie)
     {
         LinkedList<Integer> listFO = new LinkedList<>();
         for (int i = 0; i < intervalos; i++) {
