@@ -323,32 +323,32 @@ public class VistaGeneradorController {
     
     @FXML
     private void pruebaChiPoi(ActionEvent event) {
-//        if(poi != null){
-//            if(poi.pruebaChi(Integer.parseInt(txtDistPoiCantInt.getText()), valoresPoi,
-//                    Integer.parseInt(txtDistPoiCantVal.getText()))){
-//                Alert alert = new Alert(AlertType.INFORMATION);
-//                alert.setTitle("Prueba Chi");
-//                alert.setHeaderText("La serie paso la prueba de Chi Cuadrado");
-//                alert.setContentText("I have a great message for you!");
-//
-//                alert.showAndWait();
-//                
-//            }else{
-//                Alert alert = new Alert(AlertType.ERROR);
-//                alert.setTitle("Prueba Chi");
-//                alert.setHeaderText("La serie no paso la pruba de Chi Cuadrado");
-//                alert.setContentText("Ooops, there was an error!");
-//
-//                alert.showAndWait();
-//            }else{
-//            Alert alert = new Alert(AlertType.WARNING);
-//            alert.setTitle("Advertencia");
-//            alert.setHeaderText("Debe generar una serie primero");
-//            alert.setContentText("Careful with the next step!");
-//
-//            alert.showAndWait();
-//        }
-//        }
+        if(poi != null){
+            if(poi.pruebaChi(Integer.parseInt(txtDistPoiCantInt.getText()), valoresPoi,
+                    Integer.parseInt(txtDistPoiCantVal.getText()))){
+                Alert alert = new Alert(AlertType.INFORMATION);
+                alert.setTitle("Prueba Chi");
+                alert.setHeaderText("La serie paso la prueba de Chi Cuadrado");
+                alert.setContentText("I have a great message for you!");
+
+                alert.showAndWait();
+                
+            }else{
+                Alert alert = new Alert(AlertType.ERROR);
+                alert.setTitle("Prueba Chi");
+                alert.setHeaderText("La serie no paso la pruba de Chi Cuadrado");
+                alert.setContentText("Ooops, there was an error!");
+
+                alert.showAndWait();
+            }
+        }else{
+            Alert alert = new Alert(AlertType.WARNING);
+            alert.setTitle("Advertencia");
+            alert.setHeaderText("Debe generar una serie primero");
+            alert.setContentText("Careful with the next step!");
+
+            alert.showAndWait();
+        }
     }
     
     @FXML

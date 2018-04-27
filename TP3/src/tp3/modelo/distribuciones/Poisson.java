@@ -55,10 +55,10 @@ public class Poisson implements IModeloDistr{
         }while(this.p >= this.a);
        return x;       
     }
-    public boolean pruebaChi(int cantidad,int intervalos,LinkedList<Double> serie,int NP)
+    public boolean pruebaChi(int intervalos,LinkedList<Double> serie,int cantidad)
     {
         double tablaChi[]={3.84,5.99,7.81,9.49,11.1,12.6,14.1,15.5,16.9,18.3,19.7,21.0,22.4,23.7,25.0,26.3,27.6,28.9,30.1};
-        LinkedList<Double> fe=frecEsperada(intervalos,serie,cantidad,NP);
+        LinkedList<Double> fe=frecEsperada(intervalos,serie,cantidad);
         //LinkedList<Integer> fo=frecObtenida(intervalos,serie);
         double res=0;
         for (int i = 0; i < intervalos; i++) {
@@ -70,8 +70,13 @@ public class Poisson implements IModeloDistr{
             return false;
         }
     }
-    public LinkedList<Double> frecEsperada(int intervalos, LinkedList<Double> serie, int cantidad,int NP)
+    public LinkedList<Double> frecEsperada(int intervalos, LinkedList<Double> serie, int cantidad)
     {
+        double NP = 0;
+        for (int i = 0; i < serie.size(); i++) {
+            NP = NP + serie.get(i);
+            
+        }
     LinkedList<Double> listFE = new LinkedList<>();
     LinkedList<Double> P=new LinkedList<>();
         for (int i = 0; i < intervalos; i++) {
