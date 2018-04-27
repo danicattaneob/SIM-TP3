@@ -16,4 +16,6 @@ public interface IModeloDistr {
     public LinkedList<Double> generarSerie(int cantidad);
     public double generarProximoNumero();
     
+    
+    
 }

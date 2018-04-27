@@ -29,6 +29,7 @@ public class Main {
           LinkedList<Double> serie = u.generarSerie(100);
           System.out.println(serie); //le paso la cantidad de valores que quiero
         System.out.println(u.frecObtenida(5, serie));
+        System.out.println(u.pruebaChi(5, serie));
        // System.out.println(u.pruebaChi(5, serie));
 ////        ////////////////////////////////// EXPONENCIAL
         Exponencial ex = new Exponencial(3,false);
@@ -37,6 +38,7 @@ public class Main {
 //        ex.setM(8);//modulo
 //        ex.setMe(5);
         System.out.println(ex.generarSerie(10));
+        System.out.println(ex.pruebaChi(5, serie, 0.38, 100));
 ////        ///////////////////////////////// NORMAL  
 //        Normal n = new Normal(2, 323, 4);
 ////      LinkedList l=n.generarSerie(1);

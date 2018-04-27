@@ -3,7 +3,10 @@
     <editor-bookmarks xmlns="http://www.netbeans.org/ns/editor-bookmarks/2" lastBookmarkId="0"/>
     <open-files xmlns="http://www.netbeans.org/ns/projectui-open-files/2">
         <group>
-            <file>file:/C:/Users/Dani/Documents/NetBeansProjects/SIM-TP3/TP3/src/tp3/Interfaz/TP3.java</file>
+            <file>file:/Users/valter/Desktop/SIM/SIM-TP3/TP3/src/tp3/modelo/distribuciones/Exponencial.java</file>
+            <file>file:/Users/valter/Desktop/SIM/SIM-TP3/TP3/src/tp3/modelo/distribuciones/Uniforme.java</file>
+            <file>file:/Users/valter/Desktop/SIM/SIM-TP3/TP3/src/tp3/modelo/distribuciones/Normal.java</file>
+            <file>file:/Users/valter/Desktop/SIM/SIM-TP3/TP3/src/tp3/modelo/distribuciones/Poisson.java</file>
         </group>
     </open-files>
 </project-private>
