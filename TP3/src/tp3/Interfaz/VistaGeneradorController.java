@@ -7,6 +7,7 @@ import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import javafx.event.ActionEvent;
 import javafx.fxml.FXML;
+import javafx.scene.chart.BarChart;
 import javafx.scene.chart.LineChart;
 import javafx.scene.control.Alert;
 import javafx.scene.control.Alert.AlertType;
@@ -59,7 +60,10 @@ public class VistaGeneradorController {
     private TextField txtDistUnCantInt;
 
     @FXML
-    private LineChart<?, ?> LChartDistUni;
+    private LineChart<Double, Double> LChartDistUni;
+    
+    @FXML
+    private BarChart<Double, Double> brChDistUn;
 
     @FXML
     private Button btnDistExpGen;
@@ -98,7 +102,7 @@ public class VistaGeneradorController {
     private TextField txtDistExpCantInt;
 
     @FXML
-    private LineChart<?, ?> LChartDistExp;
+    private LineChart<Double, Double> LChartDistExp;
 
     @FXML
     private Button btnDistPoiGen;
@@ -137,7 +141,7 @@ public class VistaGeneradorController {
     private TextField txtDistPoiCantInt;
 
     @FXML
-    private LineChart<?, ?> LChartDistPoi;
+    private LineChart<Double, Double> LChartDistPoi;
 
     @FXML
     private Button btnDistNorGen;
@@ -180,7 +184,7 @@ public class VistaGeneradorController {
     private TextField txtDistNorCantInt;
 
     @FXML
-    private LineChart<?, ?> LChartDistNor;
+    private LineChart<Double, Double> LChartDistNor;
     
     private Uniforme un;
     private Exponencial exp;
@@ -190,6 +194,10 @@ public class VistaGeneradorController {
     private LinkedList<Double> valoresExp;
     private LinkedList<Double> valoresPoi;
     private LinkedList<Double> valoresNor;
+    private LinkedList<Integer> frecUn;
+    private LinkedList<Integer> frecExp;
+    private LinkedList<Integer> frecPoi;
+    private LinkedList<Integer> frecNor;
     
     
     public void initialize(URL url, ResourceBundle rb) {
@@ -421,5 +429,26 @@ public class VistaGeneradorController {
         valoresNor.clear();
         LVDistNor.setItems(null);
         nor = null;
+    }
+    
+    @FXML
+    private void graficarSerieUn(ActionEvent event) {
+        frecUn = un.frecObtenida(Integer.parseInt(txtDistUnCantInt.getText()), valoresUn);
+        for (int i = 0; i < frecUn.size(); i++) {
+            ;
+            
+        }
+    }
+    
+    @FXML
+    private void graficarSerieExp(ActionEvent event) {
+    }
+    
+    @FXML
+    private void graficarSeriePoi(ActionEvent event) {
+    }
+    
+    @FXML
+    private void graficarSerieNor(ActionEvent event) {
     }
 }

@@ -118,6 +118,26 @@ public class Normal implements IModeloDistr {
         return listFE;
     }
 
+    public LinkedList<Integer> frecObtenida(int intervalos, LinkedList<Double> serie)
+    {
+        LinkedList<Integer> listFO = new LinkedList<>();
+        for (int i = 0; i < intervalos; i++) {
+            listFO.add(0);//Seteo en cero
+        }
+        bubbleSort(serie);
+        double rango = serie.getLast() - serie.getFirst();
+        double amp = rango / intervalos;
+        double amplitud = Math.round(amp); //redondeo para que el intervalo contenga los primeros y ultimos 
+        for (int i = 0; i < serie.size(); i++) {
+            for (int j = 0; j < intervalos; j++) {
+                if (serie.get(i) >= (serie.getFirst() + amplitud * j) && serie.get(i) < (serie.getFirst() + amplitud * (j + 1))) {
+                    listFO.set(j, listFO.get(j)+1);
+                }
+            }
+        }
+        return listFO;
+    }
+    
     private void bubbleSort(LinkedList<Double> v) {
         boolean ordenado = false;
         int n = v.size();
